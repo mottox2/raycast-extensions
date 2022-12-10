@@ -105,7 +105,7 @@ const ScheduleList: FC<{
   schedules: Schedule[]
   title: string
 }> = ({ schedules, title }) => {
-  return <List>
+  return <List isShowingDetail>
     <List.Section title={title}>
       {schedules.map((schedule, index) => {
         const date = new Date(schedule.start_time)
@@ -128,11 +128,10 @@ const ScheduleDetail: FC<{
   return <List.Item.Detail
     markdown={`
 ${schedule.stages.map(stage => {
-      return `
+  return `![](${stage.image})
+
 ${stage.name}
-![](${stage.image})
-`
-    }).join('\n')}
+`}).join('\n')}
 `}
   />
 }
